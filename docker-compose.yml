@@ -3,18 +3,20 @@ services:
   gluetun:
     image: qmcgaw/gluetun:v3.34
     container_name: gluetun
-     External Container --> https://github.com/qdm12/gluetun-wiki/blob/main/setup/connect-a-container-to-gluetun.md#external-container-to-gluetun
+    # External Container --> https://github.com/qdm12/gluetun-wiki/blob/main/setup/connect-a-container-to-gluetun.md#external-container-to-gluetun
     cap_add:
       - NET_ADMIN
     devices:
       - /dev/net/tun:/dev/net/tun
     environment:
-      # SetUp --> https://github.com/qdm12/gluetun-wiki/tree/main/setup#setup
+    #  # SetUp --> https://github.com/qdm12/gluetun-wiki/tree/main/setup#setup
       - VPN_SERVICE_PROVIDER=
       - VPN_TYPE=
-      # OpenVPN --> https://github.com/qdm12/gluetun-wiki/blob/main/setup/options/openvpn.md
-      - OPENVPN_USER=  vpnbook
-      - OPENVPN_PASSWORD= b49dzh6
+    #  # OpenVPN --> https://github.com/qdm12/gluetun-wiki/blob/main/setup/options/openvpn.md
+      - OPENVPN_USER=P8qcVYo9k6I1OSey
+      - OPENVPN_PASSWORD=NFCbDC3juGUcap4w51q751n8aOECydhU
+      - SERVER_COUNTRIES=Japan
+      - FREE_ONLY=on
     #  # Wireguard --> https://github.com/qdm12/gluetun-wiki/blob/main/setup/options/wireguard.md
     #  - WIREGUARD_PRIVATE_KEY=
     #  - WIREGUARD_ADDRESS=
@@ -25,10 +27,10 @@ services:
       - UPDATER_PERIOD=24h
     ports:
       - "8009:8009"
-    #  - "8080:8080"
     restart: on-failure
+
   api-py:
     build: .
-    network_mode: "service:gluetun"
-    ports:
-      - "8009:8009"
+    network_mode: "service:gluetun" 
+  #  ports:
+    #  - "8009:8009
